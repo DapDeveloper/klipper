@@ -5,14 +5,12 @@
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import logging
 from . import bulk_sensor
-
 #
 # Constants
 #
 UPDATE_INTERVAL = 0.10
 SAMPLE_ERROR_DESYNC = -0x80000000
 SAMPLE_ERROR_LONG_READ = 0x40000000
-
 # Implementation of HX711 and HX717
 class HX71xBase():
     def __init__(self, config, sensor_type,
@@ -144,7 +142,6 @@ class HX71xBase():
         return {'data': samples, 'errors': self.last_error_count,
                 'overflows': self.ffreader.get_last_overflows()}
 
-
 class HX711(HX71xBase):
     def __init__(self, config):
         super(HX711, self).__init__(config, "hx711",
@@ -152,7 +149,6 @@ class HX711(HX71xBase):
                                     {80: 80, 10: 10}, 80,
                                     # HX711 gain/channel options
                                     {'A-128': 1, 'B-32': 2, 'A-64': 3}, 'A-128')
-
 
 class HX717(HX71xBase):
     def __init__(self, config):
@@ -162,7 +158,6 @@ class HX717(HX71xBase):
                                     # HX717 gain/channel options
                                     {'A-128': 1, 'B-64': 2, 'A-64': 3,
                                      'B-8': 4}, 'A-128')
-
 
 HX71X_SENSOR_TYPES = {
     "hx711": HX711,

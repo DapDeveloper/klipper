@@ -67,7 +67,6 @@ class Thermistor:
             ln_r = (inv_t - self.c1) / self.c2
         r = math.exp(ln_r) + self.inline_resistor
         return r / (self.pullup + r)
-
 # Create an ADC converter with a thermistor
 def PrinterThermistor(config, params):
     pullup = config.getfloat('pullup_resistor', 4700., above=0.)

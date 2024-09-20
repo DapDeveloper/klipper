@@ -6,11 +6,9 @@
 import math, logging, multiprocessing, traceback
 import queuelogger
 
-
 ######################################################################
 # Coordinate descent
 ######################################################################
-
 # Helper code that implements coordinate descent
 def coordinate_descent(adj_params, params, error_func):
     # Define potential changes
@@ -46,7 +44,6 @@ def coordinate_descent(adj_params, params, error_func):
     logging.info("Coordinate descent best_err: %s  rounds: %d",
                  best_err, rounds)
     return params
-
 # Helper to run the coordinate descent function in a background
 # process so that it does not block the main thread.
 def background_coordinate_descent(printer, adj_params, params, error_func):
@@ -81,8 +78,6 @@ def background_coordinate_descent(printer, adj_params, params, error_func):
     calc_proc.join()
     parent_conn.close()
     return res
-
-
 ######################################################################
 # Trilateration
 ######################################################################

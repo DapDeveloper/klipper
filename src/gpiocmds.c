@@ -95,11 +95,11 @@ digital_load_event(struct timer *timer)
 
     // Schedule next event
     if (!(flags & DF_TOGGLING)) {
-        if (!(flags & DF_CHECK_END))
-            // Pin not toggling and nothing scheduled
-            return SF_DONE;
-        d->timer.waketime = end_time;
-        return SF_RESCHEDULE;
+            if (!(flags & DF_CHECK_END))
+                // Pin not toggling and nothing scheduled
+                return SF_DONE;
+            d->timer.waketime = end_time;
+            return SF_RESCHEDULE;
     }
     uint32_t waketime = d->timer.waketime + on_duration;
     if (flags & DF_CHECK_END && !timer_is_before(waketime, end_time)) {

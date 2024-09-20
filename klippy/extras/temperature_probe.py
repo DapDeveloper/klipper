@@ -220,7 +220,6 @@ class TemperatureProbe:
             "at temp %.2fC"
             % (self.name, cnt, exp_cnt, last_temp, self.next_auto_temp)
         )
-
     def _manual_probe_finalize(self, kin_pos):
         if kin_pos is None:
             # Calibration aborted
